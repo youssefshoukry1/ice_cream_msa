@@ -1,0 +1,66 @@
+﻿.stage { container-type: inline-size; isolation: isolate; }
+.stage h2 { font-size: min(clamp(42px, 4.6vw, 74px), 11.6cqi); }
+.line { display: block; position: relative; width: max-content; max-width: 100%; line-height: 1.1; }
+.words { display: block; white-space: nowrap; }
+.ribbon, .tool { display: none; pointer-events: none; }
+
+.tool {
+  position: absolute;
+  top: 0;
+  width: 2.7em;
+  aspect-ratio: 1250 / 405;
+  z-index: 1;
+  transform-origin: left center;
+  --arrival: translate(-80%, -80%) rotate(10deg);
+  --arrival-opacity: 0;
+}
+.tool[data-last-pass] {
+  --arrival: translate(.05em, 12%) scale(.5) rotate(4deg);
+  --arrival-opacity: 1;
+}
+.stage:not([data-phase]) .tool[data-last-pass] {
+  display: block;
+  left: 100%;
+  transform: var(--arrival);
+}
+.utensil, .tool img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.utensil { transform: scaleX(-1); }
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  .stage[data-phase] .ribbon {
+    display: block;
+    position: absolute;
+    inset: 3% -1%;
+    width: 102%;
+    height: 94%;
+  }
+  .stage[data-phase] .words { opacity: 0; }
+  .stage[data-phase] .tool { display: block; opacity: 0; }
+  .ball { transform-origin: 19% 87%; }
+  .line { --pass-delay: 250ms; --pass: 1350ms cubic-bezier(.38,.02,.26,1) var(--pass-delay) both; }
+  .line + .line { --pass-delay: 1540ms; }
+  .stage[data-phase="playing"] .words { animation: lettering var(--pass); }
+  .stage[data-phase="playing"] .ribbon { animation: carve var(--pass); }
+  .stage[data-phase="playing"] .tool { animation: sweep var(--pass); }
+  .stage[data-phase="playing"] .ball { animation: roll var(--pass); }
+
+  @keyframes lettering {
+    0%, 14% { opacity: 1; clip-path: inset(-5% 100% -5% -2%); }
+    82%, 100% { opacity: 1; clip-path: inset(-5% -2%); }
+  }
+  @keyframes carve {
+    0%, 14% { clip-path: ellipse(106% 220% at 100% 55%); }
+    82%, 100% { clip-path: ellipse(106% 220% at 208% 55%); }
+  }
+  @keyframes sweep {
+    0% { left: 0; opacity: 0; transform: translate(-80%, -58%) rotate(12deg); }
+    14% { left: 0; opacity: 1; transform: translate(-81%, 13%) rotate(3deg); }
+    82% { left: 99%; opacity: 1; transform: translate(-81%, 8%) rotate(2deg); }
+    91% { opacity: 1; }
+    100% { left: 100%; opacity: var(--arrival-opacity); transform: var(--arrival); }
+  }
+  @keyframes roll {
+    0%, 14% { transform: scale(.03) rotate(-38deg); }
+    82%, 100% { transform: scale(1) rotate(0deg); }
+  }
+}

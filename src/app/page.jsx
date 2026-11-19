@@ -1,16 +1,17 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import HeroHover from "./HeroHover";
+import ScoopHeadline from "./ScoopHeadline";
 import { useScrollReveals } from "./useScrollReveals";
 
 const flavors = [
-  { id: "pistazie", ingredient: { left: 58, top: 497, width: 256, height: 107 }, preference: "Nussig", name: "Pistazie", kind: "Nussig", note: "Fein geröstet und herrlich cremig.", headline: "Ein Löffel", finish: "Pistazie.", color: "#dce9b5", price: 690 },
-  { id: "erdbeere", ingredient: { left: 435, top: 428, width: 152, height: 150 }, preference: "Fruchtig", name: "Erdbeere", kind: "Fruchtig", note: "Fruchtig, frisch und sommerlich.", headline: "Ein Löffel", finish: "Sommer.", color: "#f4c0ce", price: 650 },
-  { id: "vanille", ingredient: { left: 230, top: 467, width: 357, height: 136 }, preference: "Sanft & süß", name: "Vanille", kind: "Klassisch", note: "Sanfte Vanille und feine Süße.", headline: "Ein Löffel", finish: "Vanille.", color: "#ffe5a3", price: 650 },
-  { id: "schokolade", ingredient: { left: 327, top: 460, width: 270, height: 139 }, preference: "Intensiv & schokoladig", name: "Schokolade", kind: "Klassisch", note: "Dunkler Kakao und voller Geschmack.", headline: "Ein Löffel", finish: "Schoko.", color: "#d9ebf5", price: 690 },
+  { id: "pistazie", layers: ["schalen", "kerne"], ingredient: { left: 58, top: 497, width: 256, height: 107 }, preference: "Nussig", name: "Pistazie", kind: "Nussig", note: "Fein geröstet und herrlich cremig.", headline: "Ein Löffel", finish: "Pistazie.", color: "#dce9b5", price: 690 },
+  { id: "erdbeere", layers: ["frucht"], ingredient: { left: 435, top: 428, width: 152, height: 150 }, preference: "Fruchtig", name: "Erdbeere", kind: "Fruchtig", note: "Fruchtig, frisch und sommerlich.", headline: "Ein Löffel", finish: "Sommer.", color: "#f4c0ce", price: 650 },
+  { id: "vanille", layers: ["zutat"], ingredient: { left: 230, top: 467, width: 357, height: 136 }, preference: "Sanft & süß", name: "Vanille", kind: "Klassisch", note: "Sanfte Vanille und feine Süße.", headline: "Ein Löffel", finish: "Vanille.", color: "#ffe5a3", price: 650 },
+  { id: "schokolade", layers: ["stuecke", "kruemel"], ingredient: { left: 327, top: 460, width: 270, height: 139 }, preference: "Intensiv & schokoladig", name: "Schokolade", kind: "Klassisch", note: "Dunkler Kakao und voller Geschmack.", headline: "Ein Löffel", finish: "Schoko.", color: "#d9ebf5", price: 690 },
 ];
 const money = (cents) => new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(cents / 100);
 const key = "loeffelwerk-preview-cart-v1";
@@ -26,6 +27,7 @@ export default function Home() {
   const [filter, setFilter] = useState("Alle");
   const [cart, setCart] = useState({});
   const [ready, setReady] = useState(false);
+  const [openQuestion, setOpenQuestion] = useState(null);
   const [panel, setPanel] = useState(null);
   const [notice, setNotice] = useState("");
   const dialog = useRef(null);
@@ -62,9 +64,16 @@ export default function Home() {
       <section className="catalog content" id="sorten"><div className="cathead" data-reveal="rise"><h2>Unsere Auswahl<span>.</span></h2><div className="filters" aria-label="Eissorten filtern">{["Alle","Nussig","Fruchtig","Klassisch"].map(k=><button key={k} aria-pressed={filter===k} onClick={()=>setFilter(k)}>{k}</button>)}</div></div>
       <div className="grid" data-reveal="cards">{flavors.filter(f=>filter==="Alle"||f.kind===filter).map(f=><article key={f.id}><button className="pack" aria-label={f.name+" ansehen"} onClick={()=>setPanel(f.id)}>
         <Image src={`/images/${f.id}-becher.webp`} alt={f.name+" im Eisbecher"} width={627} height={627}/>
-        <Image className="packIngredient" src={`/images/${f.id}-${f.id === "erdbeere" ? "frucht" : "zutat"}.webp`}
-          alt="" width={f.ingredient.width} height={f.ingredient.height} sizes="(max-width: 860px) 30vw, 15vw"
-          style={{left: (f.ingredient.left / 627 * 100) + "%", top: (f.ingredient.top / 627 * 100) + "%", width: (f.ingredient.width / 627 * 100) + "%"}}/>
+        {f.layers.map(layer => (
+          <Image key={layer} className="packIngredient" src={`/images/${f.id}-${layer}.webp`}
+            alt="" width={f.ingredient.width} height={f.ingredient.height} sizes="(max-width: 860px) 30vw, 15vw"
+            style={{
+              left: (f.ingredient.left / 627 * 100) + "%",
+              top: (f.ingredient.top / 627 * 100) + "%",
+              width: (f.ingredient.width / 627 * 100) + "%",
+              "--ingredient-lift": (layer === "schalen" || layer === "stuecke") ? "-16px" : "-6px",
+            }} />
+        ))}
       </button><h3><button onClick={()=>setPanel(f.id)}>{f.name}</button></h3><p className="quantity">500 ml <span>·</span> {money(f.price*2)}/l</p><div className="buy"><strong>{money(f.price)}</strong><button onClick={()=>add(f)}>In den Warenkorb <span>+</span></button></div></article>)}</div></section>
       <section id="idee" className="idea"><div className="content ideaInner" data-reveal="rise"><div className="eyebrow"><Icon name="spoon"/> Unsere Idee</div><h2>Der Geschmack<br/>macht den Anfang.</h2><p>Erst die Sorte, dann der Löffel. Bei Löffelwerk findest du deinen Favoriten nach Geschmack – von fein-nussiger Pistazie bis zur fruchtigen Erdbeere.<br/><Link className="sectionLink" href="/ueber-uns">Über uns →</Link></p></div></section>
       <section id="sortenfinder" className="content flavorFinder" aria-labelledby="finder-title"
@@ -99,8 +108,8 @@ export default function Home() {
       <section id="erdbeerpause" className="content strawberryFeature" aria-labelledby="erdbeer-title">
         <div className="strawberryPanel">
           <Image className="campaignPhoto" data-reveal="photo" src="/images/erdbeerpause.webp" alt="Eine Frau genießt Erdbeereis aus einem rosa Löffelwerk-Becher." width={1200} height={1200} sizes="(max-width: 700px) 92vw, (max-width: 1500px) 47vw, 680px"/>
-          <div className="campaignCopy" data-reveal="rise">
-            <h2 id="erdbeer-title">Zeit für eine Erdbeerpause.</h2>
+          <div className="campaignCopy">
+            <ScoopHeadline />
             <p>Ein Platz in der Sonne, ein Löffel in der Hand und ein Becher Erdbeereis ganz für dich.</p>
             <button type="button" className="primary" onClick={() => setPanel("erdbeere")}>Erdbeere entdecken <Icon name="arrow"/></button>
           </div>
@@ -123,7 +132,32 @@ export default function Home() {
           </figure>
         </div>
       </section>
-      <section className="content faq" id="versand" data-reveal="fade"><h2>Fragen zur<br/>Bestellung<span>.</span></h2><div>{[["Was kostet der Versand?","Die Versandkosten geben wir vor Verkaufsstart bekannt."],["Wo finde ich Zutaten und Allergene?","Die verbindlichen Angaben zu Zutaten und Allergenen folgen vor dem Verkaufsstart auf den jeweiligen Produktseiten."],["Kann ich schon bestellen?","Du kannst die Beispielsorten in deinen Warenkorb legen. Diese Designvorschau nimmt noch keine Bestellungen oder Zahlungen an."]].map(([q,a])=><details key={q}><summary>{q}</summary><p>{a}</p></details>)}<Link className="sectionLink" href="/versand">Versand &amp; Lieferung →</Link></div></section>
+      <section className="content faq" id="versand" data-reveal="fade" aria-labelledby="faq-title">
+        <h2 id="faq-title">Fragen zur<br/>Bestellung<span>.</span></h2>
+        <div>
+          {[
+            ["versandkosten", "Was kostet der Versand?", "Die Versandkosten geben wir vor Verkaufsstart bekannt."],
+            ["allergene", "Wo finde ich Zutaten und Allergene?", "Die verbindlichen Angaben zu Zutaten und Allergenen folgen vor dem Verkaufsstart auf den jeweiligen Produktseiten."],
+            ["bestellen", "Kann ich schon bestellen?", "Du kannst die Beispielsorten in deinen Warenkorb legen. Diese Designvorschau nimmt noch keine Bestellungen oder Zahlungen an."]
+          ].map(([id, question, answer]) => {
+            const expanded = openQuestion === id;
+            return (
+              <div className="faqItem" key={id}>
+                <h3>
+                  <button type="button" className="faqToggle" aria-expanded={expanded} aria-controls={`answer-${id}`}
+                    onClick={() => setOpenQuestion(current => current === id ? null : id)}>
+                    <span>{question}</span><span className="faqIndicator" aria-hidden="true">+</span>
+                  </button>
+                </h3>
+                <div id={`answer-${id}`} className="faqAnswer" aria-hidden={!expanded}>
+                  <div><p>{answer}</p></div>
+                </div>
+              </div>
+            );
+          })}
+          <Link className="sectionLink" href="/versand">Versand &amp; Lieferung →</Link>
+        </div>
+      </section>
     </main><footer><div className="content foot"><a className="logo" href="#inhalt">Löffelwerk.</a><div className="footGroup"><b>Sortiment</b><a href="#sorten">Eissorten</a><Link href="/ueber-uns">Über uns</Link></div><div className="footGroup"><b>Service</b><Link href="/kontakt">Kontakt</Link><Link href="/versand">Versand &amp; Lieferung</Link></div><div className="footGroup"><b>Rechtliches</b><Link href="/impressum">Impressum</Link><Link href="/datenschutz">Datenschutz</Link></div><small>Designvorschau · Beispielsorten und Preise</small></div></footer>
     <span role="status" className="sr">{notice}</span>
     <dialog ref={dialog} onCancel={()=>setPanel(null)} onClose={()=>setPanel(null)} onClick={e=>{if(e.target===e.currentTarget)setPanel(null)}} aria-labelledby="panel-title">
@@ -133,6 +167,7 @@ export default function Home() {
       {panel==="cart" && <>{count===0?<p>Dein Warenkorb ist leer.</p>:<>{flavors.filter(f=>cart[f.id]>0).map(f=><div className="line" key={f.id}><Image src={'/images/'+f.id+'.webp'} width={60} height={60} alt=""/><div><b>{f.name}</b><small>500 ml · {money(f.price)}</small></div><div className="step"><button aria-label={f.name+" verringern"} onClick={()=>change(f.id,-1)}>−</button>{cart[f.id]}<button disabled={cart[f.id]>=99} aria-label={f.name+" erhöhen"} onClick={()=>change(f.id,1)}>+</button></div></div>)}<p className="total"><b>Zwischensumme</b><b>{money(flavors.reduce((s,f)=>s+(cart[f.id]||0)*f.price,0))}</b></p><p className="quantity">Designvorschau · Bestellungen sind noch nicht möglich.</p></>}<button className="primary" onClick={()=>{setPanel(null);document.getElementById("sorten").scrollIntoView()}}>Sorten entdecken <Icon name="arrow"/></button></>}
       </div></dialog></>;
 }
+
 
 
 

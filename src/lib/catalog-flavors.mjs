@@ -1,0 +1,6 @@
+export const flavors = [
+  { id: "pistazie", artworkHash: "de7e7dd86cb094fbc73762ee6d076acf924cab9c", layers: ["schalen", "kerne"], ingredient: { left: 58, top: 497, width: 256, height: 107 }, preference: "Nussig", name: "Pistazie", kind: "Nussig", note: "Fein geröstet und herrlich cremig.", headline: "Ein Löffel", finish: "Pistazie.", color: "#dce9b5" },
+  { id: "erdbeere", artworkHash: "a370f899b987ceb86c5aa642739ab3b59ffa6dc8", layers: ["frucht"], ingredient: { left: 435, top: 428, width: 152, height: 150 }, preference: "Fruchtig", name: "Erdbeere", kind: "Fruchtig", note: "Fruchtig, frisch und sommerlich.", headline: "Ein Löffel", finish: "Sommer.", color: "#f4c0ce" },
+  { id: "vanille", artworkHash: "ad0572149b6c50577cc9385bbfe93fd3d371a723", layers: ["zutat"], ingredient: { left: 230, top: 467, width: 357, height: 136 }, preference: "Sanft & süß", name: "Vanille", kind: "Klassisch", note: "Sanfte Vanille und feine Süße.", headline: "Ein Löffel", finish: "Vanille.", color: "#ffe5a3" },
+  { id: "schokolade", artworkHash: "10ac0d85de9e9e9449d5885d62456e42058ca304", layers: ["stuecke", "kruemel"], ingredient: { left: 327, top: 460, width: 270, height: 139 }, preference: "Intensiv & schokoladig", name: "Schokolade", kind: "Klassisch", note: "Dunkler Kakao und voller Geschmack.", headline: "Ein Löffel", finish: "Schoko.", color: "#d9ebf5" },
+];

@@ -1,0 +1,8 @@
+/.env*
+/.vercel/
+/.next/
+/node_modules/
+/research/
+/scripts/
+/studio/*
+!/studio/project.json

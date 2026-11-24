@@ -196,3 +196,22 @@ button:focus-visible, a:focus-visible, summary:focus-visible { outline-color: #1
   .faqAnswer { transition: grid-template-rows 280ms cubic-bezier(.22,.72,.25,1), opacity 200ms ease; }
   .faqIndicator { transition: transform 260ms ease, background-color 200ms ease, border-color 200ms ease; }
 }
+.cartLineDetails { min-width: 0; }
+.cartNotice { color: #84314a; }
+.cartRemove, .cartPriceConfirm { text-decoration: underline; text-underline-offset: .2em; }
+.cartRemove { font-size: 13px; padding: 0; }
+.cartPriceConfirm { padding: 10px 0 0; text-align: left; }
+.step button:disabled { opacity: .45; cursor: default; }
+.deliveryQuote { border-top: 1px solid var(--line); padding-block: 12px; }
+.deliveryQuote h3 { font-size: 21px; margin: 0; }
+.deliveryQuoteForm { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.deliveryQuoteForm label { flex-basis: 100%; font-size: 14px; }
+.deliveryQuoteForm input { width: 7rem; font: inherit; color: var(--ink); background: var(--cream); border: 1px solid var(--ink); border-radius: 8px; padding: 5px 8px; }
+.deliveryQuoteForm button { border: 1px solid var(--ink); border-radius: 24px; padding: 5px 10px; }
+.deliveryQuoteTotals { margin-bottom: 0; }
+.deliveryQuoteTotals div { display: flex; justify-content: space-between; gap: 8px; }
+.deliveryQuoteTotals dd { margin: 0; white-space: nowrap; }
+.deliveryQuoteTotals div:last-child { font-weight: 700; }
+.checkoutReturn { padding-block: clamp(48px, 9vw, 144px); }
+.checkoutReturn h1 { font-size: clamp(38px, 6vw, 82px); overflow-wrap: anywhere; }
+.productFoodDetails p { white-space: pre-line; }

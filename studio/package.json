@@ -1,0 +1,17 @@
+{
+  "name": "loeffelwerk-studio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "sanity dev",
+    "build": "sanity build"
+  },
+  "dependencies": {
+    "@sanity/cli": "^8.30.0",
+    "react": "^19.2.2",
+    "react-dom": "^19.2.2",
+    "sanity": "^6.24.0",
+    "styled-components": "^6.1.15"
+  }
+}

@@ -224,7 +224,13 @@ export default function HomeStorefront({ products }) {
         {removedItems > 0 && <p className="cartNotice" role="status">
           Nicht mehr angebotene Sorten wurden aus deinem gespeicherten Warenkorb entfernt.
         </p>}
-        {count === 0 ? <p>Dein Warenkorb ist leer.</p> : <>
+        {count === 0 ? <>
+          <p>Dein Warenkorb ist leer.</p>
+          <button className="primary" onClick={() => {
+            setPanel(null);
+            document.getElementById("sorten").scrollIntoView();
+          }}>Sorten entdecken <Icon name="arrow" /></button>
+        </> : <>
           {cartProducts.map(flavor => {
             const {quantity, priceCents} = cart[flavor.id];
             const available = canBuy(flavor);
@@ -254,12 +260,7 @@ export default function HomeStorefront({ products }) {
           </button>}
           <p className="total"><b>Zwischensumme</b><b>{money(subtotal)}</b></p>
           <DeliveryQuote key={JSON.stringify(quoteItems)} items={quoteItems} />
-          <p className="quantity">Designvorschau · Bestellungen sind noch nicht möglich.</p>
         </>}
-        <button className="primary" onClick={() => {
-          setPanel(null);
-          document.getElementById("sorten").scrollIntoView();
-        }}>Sorten entdecken <Icon name="arrow" /></button>
       </>}
       </div></dialog></>;
 }

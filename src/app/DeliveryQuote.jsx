@@ -35,6 +35,7 @@ export default function DeliveryQuote({items}) {
   const [checkoutError, setCheckoutError] = useState(null);
   const checkoutAttempt = useRef(null);
   const checkoutInFlight = useRef(false);
+  const hasQuote = Boolean(result && !result.error);
 
   async function submit(event) {
     event.preventDefault();
@@ -92,7 +93,7 @@ export default function DeliveryQuote({items}) {
     <section className="deliveryQuote" aria-labelledby="delivery-quote-title">
       <h3 id="delivery-quote-title">Kühlversand testen</h3>
       <p className="quantity" id="delivery-quote-hint">Versandvorschau mit Testwerten für Deutschland. Test-Postleitzahlen: 10115 oder 10117.</p>
-      <form className="deliveryQuoteForm" onSubmit={submit}>
+      <form id="delivery-quote-form" className="deliveryQuoteForm" onSubmit={submit}>
         <label htmlFor="delivery-zipcode">Postleitzahl</label>
         <input id="delivery-zipcode" value={postalCode} onChange={event => {
           setPostalCode(event.target.value);
@@ -100,11 +101,10 @@ export default function DeliveryQuote({items}) {
           setCheckoutError(null);
         }} inputMode="numeric" pattern="[0-9]{5}" maxLength={5} autoComplete="off"
           aria-describedby="delivery-quote-hint" required disabled={pending || startingCheckout} />
-        <button type="submit" disabled={pending || startingCheckout}>{pending ? "Wird berechnet …" : "Versand berechnen"}</button>
       </form>
       <div aria-live="polite" aria-atomic="true">
         {result?.error && <p className="cartNotice">{errorMessage(result)}</p>}
-        {result && !result.error && <dl className="deliveryQuoteTotals">
+        {hasQuote && <dl className="deliveryQuoteTotals">
           <div><dt>Warenwert</dt><dd>{format(result.subtotalCents)}</dd></div>
           <div><dt>Kühlversand</dt><dd>{format(result.shippingCents)}</dd></div>
           <div><dt>{result.taxIncluded ? "Enthaltene Teststeuer" : "Teststeuer"}</dt><dd>{format(result.taxCents)}</dd></div>
@@ -112,12 +112,17 @@ export default function DeliveryQuote({items}) {
         </dl>}
         {checkoutError && <p className="cartNotice">{errorMessage(checkoutError)}</p>}
       </div>
-      {result && !result.error && <>
-        <p className="quantity">Verwende bei Stripe dieselbe Test-Postleitzahl.</p>
+      {hasQuote && <p className="quantity">Verwende bei Stripe dieselbe Test-Postleitzahl.</p>}
+      <p className="quantity">Designvorschau · Bestellungen sind noch nicht möglich.</p>
+      {hasQuote ? (
         <button type="button" className="primary" disabled={startingCheckout} onClick={startCheckout}>
           {startingCheckout ? "Stripe wird geöffnet …" : "Weiter zu Stripe (Test)"}
         </button>
-      </>}
+      ) : (
+        <button type="submit" form="delivery-quote-form" className="primary" disabled={pending}>
+          {pending ? "Wird berechnet …" : "Versand berechnen"}
+        </button>
+      )}
     </section>
   );
 }

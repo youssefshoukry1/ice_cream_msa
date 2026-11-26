@@ -1,0 +1,1086 @@
+[
+  {
+    "key": "desserts-01",
+    "name": "KINDER PINOCCHIO",
+    "position": "1.1",
+    "group": "desserts",
+    "refs": [
+      4
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "desserts-02",
+    "name": "EIS MAUS",
+    "position": "1.2",
+    "group": "desserts",
+    "refs": [
+      68
+    ],
+    "masterWidth": 724,
+    "webWidths": [
+      320,
+      640,
+      724
+    ]
+  },
+  {
+    "key": "desserts-03",
+    "name": "AMARENA BECHER",
+    "position": "1.3",
+    "group": "desserts",
+    "refs": [
+      12
+    ],
+    "masterWidth": 724,
+    "webWidths": [
+      320,
+      640,
+      724
+    ]
+  },
+  {
+    "key": "desserts-04",
+    "name": "SALTED CARAMELL B.",
+    "position": "1.4",
+    "group": "desserts",
+    "refs": [
+      60
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "desserts-05",
+    "name": "NOUGAT BECHER",
+    "position": "1.5",
+    "group": "desserts",
+    "refs": [
+      26
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "desserts-06",
+    "name": "COOKIES BECHER",
+    "position": "1.6",
+    "group": "desserts",
+    "refs": [
+      62
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "desserts-07",
+    "name": "ERDBEER SCHOKO B.",
+    "position": "1.7",
+    "group": "desserts",
+    "refs": [
+      50
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "desserts-08",
+    "name": "MALAGA BECHER",
+    "position": "1.8",
+    "group": "desserts",
+    "refs": [
+      46
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "desserts-09",
+    "name": "PANDA BÄR",
+    "position": "2.1",
+    "group": "desserts",
+    "refs": [
+      56
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "desserts-10",
+    "name": "MARIENKÄFER",
+    "position": "2.2",
+    "group": "desserts",
+    "refs": [
+      52,
+      54
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "desserts-11",
+    "name": "COPA BANANA",
+    "position": "2.3",
+    "group": "desserts",
+    "refs": [
+      14
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "desserts-12",
+    "name": "HASELNUSS BECHER",
+    "position": "2.4",
+    "group": "desserts",
+    "refs": [
+      22
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "desserts-13",
+    "name": "WALNUSS BECHER",
+    "position": "2.5",
+    "group": "desserts",
+    "refs": [
+      30
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "desserts-14",
+    "name": "YOGURETTEN BECHER",
+    "position": "2.6",
+    "group": "desserts",
+    "refs": [
+      36
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "desserts-15",
+    "name": "SPAGHETTI CARBONARA",
+    "position": "2.7",
+    "group": "desserts",
+    "refs": [
+      40
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "desserts-16",
+    "name": "TOSKANA BECHER",
+    "position": "2.8",
+    "group": "desserts",
+    "refs": [
+      42
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "desserts-17",
+    "name": "SCHOKOLADEN BECHER",
+    "position": "3.1",
+    "group": "desserts",
+    "refs": [
+      8
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "desserts-18",
+    "name": "PISTAZIEN BECHER",
+    "position": "3.2",
+    "group": "desserts",
+    "refs": [
+      48
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "desserts-19",
+    "name": "ERDBEER BECHER",
+    "position": "3.3",
+    "group": "desserts",
+    "refs": [
+      18
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "desserts-20",
+    "name": "BERRY TANGO",
+    "position": "3.4",
+    "group": "desserts",
+    "refs": [
+      20
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "desserts-21",
+    "name": "GIOTTO BECHER",
+    "position": "3.5",
+    "group": "desserts",
+    "refs": [
+      28
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "desserts-22",
+    "name": "BRILLO FRUTTI",
+    "position": "3.6",
+    "group": "desserts",
+    "refs": [
+      34
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "desserts-23",
+    "name": "SCHWARZWALD BECHER",
+    "position": "3.7",
+    "group": "desserts",
+    "refs": [
+      58
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "desserts-24",
+    "name": "KROKANT BECHER",
+    "position": "3.8",
+    "group": "desserts",
+    "refs": [
+      44
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "desserts-25",
+    "name": "LAKRITZ BECHER",
+    "position": "4.1",
+    "group": "desserts",
+    "refs": [
+      6
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "desserts-26",
+    "name": "AFTER EIGHT BECHER",
+    "position": "4.2",
+    "group": "desserts",
+    "refs": [
+      10
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "desserts-27",
+    "name": "SPAGHETTI EIS",
+    "position": "4.3",
+    "group": "desserts",
+    "refs": [
+      16
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "desserts-28",
+    "name": "FRÜCHTE BECHER",
+    "position": "4.4",
+    "group": "desserts",
+    "refs": [
+      66
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "desserts-29",
+    "name": "ERDBEER JOGHURT B.",
+    "position": "4.5",
+    "group": "desserts",
+    "refs": [
+      24
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "desserts-30",
+    "name": "FRÜCHTE JOGHURT B.",
+    "position": "4.6",
+    "group": "desserts",
+    "refs": [
+      32
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "desserts-31",
+    "name": "BAILEYS-BECHER",
+    "position": "4.7",
+    "group": "desserts",
+    "refs": [
+      38
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "desserts-32",
+    "name": "AFTER EIGHT ROYAL",
+    "position": "4.8",
+    "group": "desserts",
+    "refs": [
+      64
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "drinks-01",
+    "name": "MATCHA TIME",
+    "position": "1.1",
+    "group": "drinks",
+    "refs": [
+      198
+    ],
+    "masterWidth": 724,
+    "webWidths": [
+      320,
+      640,
+      724
+    ]
+  },
+  {
+    "key": "drinks-02",
+    "name": "MILCHSHAKE",
+    "position": "1.2",
+    "group": "drinks",
+    "refs": [
+      101
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "drinks-03",
+    "name": "EISSCHOKOLADE",
+    "position": "2.1",
+    "group": "drinks",
+    "refs": [
+      95
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "drinks-04",
+    "name": "EISCAFÉ",
+    "position": "2.2",
+    "group": "drinks",
+    "refs": [
+      105
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "drinks-05",
+    "name": "RED ICED SMOOTHIE",
+    "position": "3.1",
+    "group": "drinks",
+    "refs": [
+      99
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "drinks-06",
+    "name": "YELLOW ICED SMOOTHIE",
+    "position": "3.2",
+    "group": "drinks",
+    "refs": [
+      103
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "drinks-07",
+    "name": "ZITRONENFALTER",
+    "position": "4.1",
+    "group": "drinks",
+    "refs": [
+      97
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "drinks-08",
+    "name": "DRAGONFRUIT SMOOTHIE",
+    "position": "4.2",
+    "group": "drinks",
+    "refs": [
+      196
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "flavors-01",
+    "name": "VANILLE",
+    "position": "1.1",
+    "group": "flavors",
+    "refs": [
+      153
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "flavors-02",
+    "name": "SCHOKOLADE",
+    "position": "1.2",
+    "group": "flavors",
+    "refs": [
+      107
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "flavors-03",
+    "name": "STRACCIATELLA",
+    "position": "1.3",
+    "group": "flavors",
+    "refs": [
+      111,
+      114,
+      117,
+      120
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "flavors-04",
+    "name": "HASELNUSS",
+    "position": "2.1",
+    "group": "flavors",
+    "refs": [
+      137
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "flavors-05",
+    "name": "VCB",
+    "position": "2.2",
+    "group": "flavors",
+    "refs": [
+      128,
+      130
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "flavors-06",
+    "name": "COOKIES",
+    "position": "2.3",
+    "group": "flavors",
+    "refs": [
+      126
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "flavors-07",
+    "name": "SALTED CARAMELL",
+    "position": "3.1",
+    "group": "flavors",
+    "refs": [
+      143
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "flavors-08",
+    "name": "ERDBEER",
+    "position": "3.2",
+    "group": "flavors",
+    "refs": [
+      109
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "flavors-09",
+    "name": "ZITRONE",
+    "position": "3.3",
+    "group": "flavors",
+    "refs": [
+      139
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "flavors-10",
+    "name": "WHITE CHOCOLATE",
+    "position": "4.1",
+    "group": "flavors",
+    "refs": [
+      149,
+      151
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "flavors-11",
+    "name": "BANANE",
+    "position": "4.2",
+    "group": "flavors",
+    "refs": [
+      135
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "flavors-12",
+    "name": "JOGHURT KIRSCH",
+    "position": "4.3",
+    "group": "flavors",
+    "refs": [
+      133,
+      145
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "flavors-13",
+    "name": "MANGO",
+    "position": "5.1",
+    "group": "flavors",
+    "refs": [
+      147
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "flavors-14",
+    "name": "MARACUJA",
+    "position": "5.2",
+    "group": "flavors",
+    "refs": [
+      141
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "flavors-15",
+    "name": "WASSERMELONE",
+    "position": "5.3",
+    "group": "flavors",
+    "refs": [
+      155
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "flavors-16",
+    "name": "SCHOKO MINZ",
+    "position": "6.1",
+    "group": "flavors",
+    "refs": [
+      157,
+      159
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "flavors-17",
+    "name": "MATCHA KOKOS",
+    "position": "6.2",
+    "group": "flavors",
+    "refs": [
+      200,
+      202
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "flavors-18",
+    "name": "MALAGA",
+    "position": "6.3",
+    "group": "flavors",
+    "refs": [
+      122,
+      124
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "flavors-19",
+    "name": "PISTAZIE",
+    "position": "7.3",
+    "group": "flavors",
+    "refs": [
+      194
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "extras-01",
+    "name": "Eiskugel",
+    "position": "1.1",
+    "group": "extras",
+    "refs": [
+      91,
+      93
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "extras-02",
+    "name": "Schlagsahne[2]",
+    "position": "1.2",
+    "group": "extras",
+    "refs": [
+      89
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "extras-03",
+    "name": "Portion Sauce",
+    "position": "2.1",
+    "group": "extras",
+    "refs": [
+      161
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "extras-04",
+    "name": "Portion Likör[13]",
+    "position": "2.2",
+    "group": "extras",
+    "refs": [
+      163
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "extras-05",
+    "name": "Portion Früchte",
+    "position": "3.1",
+    "group": "extras",
+    "refs": [
+      165,
+      167,
+      169
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "extras-06",
+    "name": "Portion Streusel",
+    "position": "3.2",
+    "group": "extras",
+    "refs": [
+      192
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "extras-07",
+    "name": "Portion extra",
+    "position": "4.1",
+    "group": "extras",
+    "refs": [
+      171,
+      173,
+      175
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  },
+  {
+    "key": "extras-08",
+    "name": "Portion Eiswaffeln",
+    "position": "4.2",
+    "group": "extras",
+    "refs": [
+      177
+    ],
+    "masterWidth": 1254,
+    "webWidths": [
+      320,
+      640,
+      960,
+      1254
+    ]
+  }
+]

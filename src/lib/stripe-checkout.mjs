@@ -1,12 +1,15 @@
 import "server-only";
 import Stripe from "stripe";
+import {menuRules} from "./menu-config.mjs";
 import {validateDeliveryDestination} from "./order-pricing.mjs";
 
 export const sandboxFlow = "loeffelwerk-sandbox";
 
 export function allowedCheckoutOrigin(requestOrigin) {
   const environment = process.env.VERCEL_ENV;
-  if (!requestOrigin || environment === "production") return null;
+  if (!requestOrigin) return null;
+  if (environment === "production") return process.env.EISTAXI_TEST_DEMO === "true" &&
+    requestOrigin === process.env.CHECKOUT_ORIGIN ? requestOrigin : null;
 
   const origins = [];
   if (process.env.CHECKOUT_ORIGIN) {
@@ -27,7 +30,7 @@ export function allowedCheckoutOrigin(requestOrigin) {
 }
 
 export function stripeSandbox() {
-  if (process.env.VERCEL_ENV === "production") return null;
+  if (process.env.VERCEL_ENV === "production" && process.env.EISTAXI_TEST_DEMO !== "true") return null;
   const key = process.env.STRIPE_SECRET_KEY?.trim();
   if (!/^sk_test_[A-Za-z0-9]+$/.test(key ?? "")) return null;
   return new Stripe(key, {timeout: 12000, maxNetworkRetries: 1});
@@ -48,7 +51,7 @@ export async function createSandboxSession(stripe, quote, attemptId, origin) {
     invoice_creation: {
       enabled: true,
       invoice_data: {
-        description: "Löffelwerk · Testrechnung",
+        description: quote.menuPreview ? "Eis-Taxi · Testrechnung" : "Löffelwerk · Testrechnung",
         metadata: {flow: sandboxFlow, checkout_attempt: attemptId},
       },
     },
@@ -73,13 +76,14 @@ export async function createSandboxSession(stripe, quote, attemptId, origin) {
     }],
     metadata: {
       flow: sandboxFlow,
+      ...(quote.menuPreview ? {catalog:"eistaxi-preview"} : {}),
       checkout_attempt: attemptId,
       delivery_country: quote.destination.country,
       delivery_postal_code: quote.destination.postalCode,
       total_cents: String(quote.totalCents),
     },
     success_url: `${origin}/checkout/return?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${origin}/checkout/cancel`,
+    cancel_url: quote.menuPreview ? `${origin}/menue/warenkorb` : `${origin}/checkout/cancel`,
   }, {idempotencyKey: `${sandboxFlow}:${attemptId}`});
 
   const shippingPending = !session.shipping_cost && session.amount_total === quote.subtotalCents;
@@ -100,7 +104,8 @@ export function checkoutReturnStatus(session) {
   if (session.currency !== "eur" || !Number.isSafeInteger(session.amount_total) ||
       String(session.amount_total) !== session.metadata.total_cents) return "amount";
   const address = sessionDelivery(session)?.address;
-  const delivery = validateDeliveryDestination(address?.country, address?.postal_code);
+  const delivery = validateDeliveryDestination(address?.country, address?.postal_code,
+    session.metadata?.catalog === "eistaxi-preview" ? menuRules : undefined);
   if (delivery.error || delivery.destination.country !== session.metadata.delivery_country ||
       delivery.destination.postalCode !== session.metadata.delivery_postal_code) return "address";
   return "paid";

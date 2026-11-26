@@ -214,3 +214,45 @@ button:focus-visible, a:focus-visible, summary:focus-visible { outline-color: #1
 .checkoutReturn { padding-block: clamp(48px, 9vw, 144px); }
 .checkoutReturn h1 { font-size: clamp(38px, 6vw, 82px); overflow-wrap: anywhere; }
 .productFoodDetails p { white-space: pre-line; }
+
+/* A creamy scoop rises inside each call to action. */
+.primary {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition: transform 350ms ease, box-shadow 350ms ease;
+}
+.primary::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -65% -12% -8%;
+  border-radius: 48% 58% 0 0 / 38% 48% 0 0;
+  background: var(--cta-fill, #fff0ce);
+  transform: translateY(105%) rotate(-8deg);
+  transition: transform 350ms cubic-bezier(.22,.61,.36,1);
+  pointer-events: none;
+}
+.primary .ctaArrow { display: inline-block; transition: transform 350ms ease; }
+#erdbeerpause .primary { --cta-fill: #ffb7cc; }
+#lieferung .primary { --cta-fill: #c8d9a5; }
+.primary:focus-visible:not(:disabled):not([aria-disabled="true"]) {
+  background: var(--gold);
+  transform: translateY(-2px);
+}
+.primary:focus-visible:not(:disabled):not([aria-disabled="true"])::before { transform: translateY(0) rotate(0); }
+.primary:focus-visible .ctaArrow { transform: translateX(4px); }
+@media (hover: hover) {
+  .primary:hover:not(:disabled):not([aria-disabled="true"]) {
+    background: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 0 rgb(52 25 12 / 16%);
+  }
+  .primary:hover:not(:disabled):not([aria-disabled="true"])::before { transform: translateY(0) rotate(0); }
+  .primary:hover .ctaArrow { transform: translateX(4px); }
+}
+.primary:active:not(:disabled):not([aria-disabled="true"]) { transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  .primary, .primary::before, .primary .ctaArrow { transition: none; }
+  .primary:hover, .primary:focus-visible, .primary:hover .ctaArrow, .primary:focus-visible .ctaArrow { transform: none !important; }
+}

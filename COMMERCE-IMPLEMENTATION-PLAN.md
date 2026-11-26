@@ -89,6 +89,10 @@ Enable paid invoice generation for one-time Checkout purchases. Confirm business
 
 **Account verification deferred:** Generate the real invoice artifact in Stripe Sandbox during final integration and compare it with the Studio order. Confirm business identity, invoice language, and tax treatment with the manager. Enable successful-payment emails in Stripe and verify delivery to an authorized test recipient when the environment supports sending. [Stripe invoice and email documentation](https://docs.stripe.com/receipts)
 
+**Connected Sandbox invoice check:** Stripe invoice `1AG1QB4U-0001` matches the private Sanity order. The PDF itemizes two Erdbeere cups at €6.50 each and €6.90 frozen delivery for a €19.90 total. Stripe marks the invoice paid with €0.00 remaining, and a payment receipt is available. The PDF uses English labels, including “Amount due.” Stripe recorded €0.00 tax on this invoice. The cart's €1.81 is illustrative test tax. Confirm the legal business details, invoice language, and actual VAT settings before validating the production invoice.
+
+**Email setting:** Enabled **Successful payments** in Stripe Sandbox Customer emails. Checkout already requests an itemized paid invoice. The live Stripe account needs the same setting during release setup. Stripe documents that automatic receipt emails are sent for live payments. Actual customer email delivery remains unverified. [Stripe paid invoice and receipt settings](https://docs.stripe.com/receipts#automatically-send-paid-invoices-with-checkout)
+
 ### 08. Add the full catalog and verify store operations
 
 Publish the remaining launch products and confirm product details, prices, allergens, availability, and images. Confirm whether inventory is managed by staff or needs automated reservation and stock updates. If stock limits are required for launch, test simultaneous orders and stock release on expired checkout. Agree on how staff mark orders shipped, cancel orders, and reconcile refunds issued in Stripe.

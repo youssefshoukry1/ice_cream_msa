@@ -1,4 +1,5 @@
 import Link from "next/link";
+import MenuCartReceipt from "./MenuCartReceipt";
 import {checkoutReturnStatus, stripeSandbox} from "../../../lib/stripe-checkout.mjs";
 import {hasRecordedOrder, sandboxSessionId} from "../../../lib/orders.mjs";
 
@@ -17,10 +18,15 @@ const messages = {
 export default async function CheckoutReturn({searchParams}) {
   const {session_id: id} = await searchParams;
   let status = "unknown";
+  let menuAttempt;
   if (typeof id === "string" && sandboxSessionId.test(id)) {
     try {
       const stripe = stripeSandbox();
-      if (stripe) status = checkoutReturnStatus(await stripe.checkout.sessions.retrieve(id));
+      if (stripe) {
+        const session = await stripe.checkout.sessions.retrieve(id);
+        status = checkoutReturnStatus(session);
+        if (session.metadata?.catalog === "eistaxi-preview") menuAttempt=session.metadata.checkout_attempt;
+      }
       if (status === "paid" && await hasRecordedOrder(id)) status = "recorded";
     } catch {
       // Keep the last verified status when either service is unavailable.
@@ -31,7 +37,8 @@ export default async function CheckoutReturn({searchParams}) {
     <main className="content checkoutReturn">
       <h1>{title}</h1>
       <p>{message}</p>
-      <Link className="primary" href="/#sorten">Zurück zum Shop</Link>
+      {menuAttempt && ["paid","recorded"].includes(status) && <MenuCartReceipt attempt={menuAttempt}/>}
+      <Link className="primary" href={menuAttempt?"/menue":"/#sorten"}>Zurück zum Shop</Link>
     </main>
   );
 }

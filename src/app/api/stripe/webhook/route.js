@@ -6,7 +6,8 @@ export async function POST(request) {
   if (!signature) return Response.json({error: "INVALID_SIGNATURE"}, {status: 400});
 
   const stripe = stripeSandbox();
-  const secret = process.env.STRIPE_WEBHOOK_SECRET?.trim();
+  const secret = (process.env.VERCEL_ENV === "production" && process.env.EISTAXI_TEST_DEMO === "true"
+    ? process.env.EISTAXI_TEST_WEBHOOK_SECRET : process.env.STRIPE_WEBHOOK_SECRET)?.trim();
   if (!stripe || !secret?.startsWith("whsec_")) return Response.json({error: "WEBHOOK_NOT_CONFIGURED"}, {status: 503});
 
   let event;

@@ -25,6 +25,7 @@ export async function POST(request) {
   }
 
   try {
+    if (process.env.VERCEL_ENV === "production" && input.catalog !== "eistaxi-preview") return failure("INVALID_CART", 400);
     const quote = await quoteOrder(input);
     if (quote.error) return Response.json(quote, {status: 422, headers});
     if (quote.totalCents !== input.expectedTotalCents) return failure("QUOTE_CHANGED", 409);

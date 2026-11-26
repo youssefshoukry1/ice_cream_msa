@@ -3,6 +3,8 @@
 /.next/
 /node_modules/
 /research/
+/menu-review/
+/CLIENT-MENU-*.md
 /scripts/
 /studio/*
 !/studio/project.json

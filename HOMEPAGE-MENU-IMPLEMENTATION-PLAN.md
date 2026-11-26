@@ -1,0 +1,27 @@
+# Eis-Taxi homepage · Menu integration plan
+
+**Awaiting approval for Step 1.** Each step ends with a review. Start the following step only after explicit approval. The final approval authorizes publishing the revised test homepage.
+
+The public homepage currently redirects to the menu. The existing sectioned homepage still uses four demonstration tubs, separate product panels and a separate cart. Restore that homepage at the root and connect it to the same Eis-Taxi catalog and cart as the [published menu](https://icecreammsa-murex.vercel.app/menue).
+
+## Section and product choices
+
+| Existing section | Proposed menu content | Visual and interaction direction |
+|---|---|---|
+| Chocolate-brown hero carousel | Lead with **SPAGHETTI EIS**. Follow with **PISTAZIEN BECHER**, **SALTED CARAMELL B.** and **SCHOKOLADEN BECHER**. | White vanilla strands and red sauce stand out against the dark hero and identify a distinctive Eis-Taxi dish. Use pistachio green, caramel gold and cocoa for the other slide accents. Pair each slide with its own product link and retain a route to the complete menu. |
+| Turquoise delivery strip | Local Eis-Taxi delivery | Link to delivery details with the €14 minimum, €2 fee and public demo’s test postcode. Replace frozen-parcel language. |
+| Yellow “Unsere Auswahl” grid | **COPA BANANA**, **HASELNUSS BECHER**, **AMARENA BECHER**, **EIS MAUS** | Banana echoes the yellow section, hazelnut introduces toasted brown, and dark cherries add contrast. The wafer-eared mouse gives Kinderbecher a recognizable entry. Use the approved ivory-background images and link each card to portion selection. Offer collection links for browsing beyond the four picks. |
+| Blush “Unsere Idee” | Use **SPAGHETTI EIS** as a concrete example in the brand story. | Retain the short editorial layout. Describe the pressed vanilla, strawberry sauce and white chocolate from the menu. Link the name to the dish. |
+| Cream-colored recommendation finder | **Nussig → PISTAZIEN BECHER**, **Fruchtig → AMARENA BECHER**, **Sanft & süß → MILCHSHAKE**, **Schokoladig → SCHOKOLADEN BECHER** | Keep the existing preference interaction. Give each result its real photo and detail link. The milkshake result opens the size and scoop choices. |
+| Strawberry promotion | **ERDBEER BECHER** in season. Feature the strawberry-based **RED ICED SMOOTHIE** when the sundae is unavailable and the drink is available. | Red and cream suit the pink headline and dark panel. Use the approved sundae or smoothie image. Change headline, CTA and animation together when switching to the drink; the spoon reveal belongs with the sundae. A new lifestyle photo would need a separate proof showing the correct serving. |
+| Delivery guide | Show how to choose a portion, check local delivery and review the order. | Replace the old branded shipping-box image with an approved menu-serving photo, such as **SPAGHETTI EIS**. Make it clear this is the dish being ordered. Describe packaging only when confirmed. |
+| FAQ, header and footer | Eis-Taxi branding, menu collections, shared cart and current test-order details | Preserve the single-open FAQ and keyboard navigation. Replace the demo brand, sample-price notice, old product dialogs, bag counter and links to outdated tub or shipping copy. Review directly linked information pages for conflicting claims. |
+
+## Implementation and approval gates
+
+1. **Approve the placement sheet.** Prepare one desktop and one mobile visual proof using the actual selected menu images. Show hero crops, card accents, the strawberry promotion in both availability states, and German CTA wording. Review the cream and gold products against the existing backgrounds.
+2. **Connect the homepage to the catalog.** Store curated placements by stable menu product ID. Resolve names, images, portions, prices, availability and detail links from the same Sanity menu records used by the storefront. Display the lowest selectable price with “ab” for multiple prices. If a featured item disappears, use an approved available substitute or omit the placement. Review the resolved placements and prices.
+3. **Replace the demonstration products and interactions.** Update the sections above, including alt text, finder results, carousel controls, promotional images and ingredient hover layers. Reuse compatible motion, create a matching layer only where the approved image supports it, and respect reduced motion. Review the working homepage on mobile and desktop.
+4. **Unify navigation and ordering.** Make the public root show the sectioned homepage. Keep the full catalog at its existing menu URL. Use the shared cart and route product actions through the detail page whenever size, scoop or preparation choices are required. Review a journey from homepage to product, cart and Stripe test checkout.
+5. **Audit before release.** Check every homepage image, title, price and CTA against the approved item. Exercise carousel, filters, finder, unavailable items, promotional fallback, keyboard controls and cart persistence. Search rendered content and image descriptions for old Löffelwerk tubs, 500 ml defaults, obsolete unit prices and delivery-box claims. Deliver preview links and the check results.
+6. **Publish after approval.** Record the current deployment, publish the revised test homepage to the existing Vercel address, and verify both the homepage and direct menu links on the hosted site. Confirm the shared cart and test checkout work from the new entry point.

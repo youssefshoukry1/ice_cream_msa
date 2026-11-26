@@ -238,15 +238,14 @@ button:focus-visible, a:focus-visible, summary:focus-visible { outline-color: #1
 #lieferung .primary { --cta-fill: #c8d9a5; }
 .primary:focus-visible:not(:disabled):not([aria-disabled="true"]) {
   background: var(--gold);
-  transform: translateY(-2px);
+  transform: none;
 }
 .primary:focus-visible:not(:disabled):not([aria-disabled="true"])::before { transform: translateY(0) rotate(0); }
 .primary:focus-visible .ctaArrow { transform: translateX(4px); }
 @media (hover: hover) {
   .primary:hover:not(:disabled):not([aria-disabled="true"]) {
     background: var(--gold);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 0 rgb(52 25 12 / 16%);
+    transform: none;
   }
   .primary:hover:not(:disabled):not([aria-disabled="true"])::before { transform: translateY(0) rotate(0); }
   .primary:hover .ctaArrow { transform: translateX(4px); }
@@ -256,3 +255,4 @@ button:focus-visible, a:focus-visible, summary:focus-visible { outline-color: #1
   .primary, .primary::before, .primary .ctaArrow { transition: none; }
   .primary:hover, .primary:focus-visible, .primary:hover .ctaArrow, .primary:focus-visible .ctaArrow { transform: none !important; }
 }
+.faq{background:#e6edda;box-shadow:0 0 0 100vmax #e6edda;clip-path:inset(0 -100vmax)}

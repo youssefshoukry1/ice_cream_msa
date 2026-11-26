@@ -1,8 +1,10 @@
 "use client";
 import Link from "next/link";
+import {TasteFinder,OrderFaq,StoreFooter} from "../StoreSections";
 import {useEffect,useRef,useState} from "react";
 import {creamBonus,flavorCount,previewAvailable,resolveSelection} from "../../lib/menu-config.mjs";
 import styles from "./menu.module.css";
+import {useScrollReveals} from "../useScrollReveals";
 
 const money = cents => (cents/100).toLocaleString("de-DE",{style:"currency",currency:"EUR"});
 const storage = "eistaxi-menu-preview-cart-v1";
@@ -47,6 +49,32 @@ function Product({p,products,add}) {
       scoop && previewAvailable(p) && <button className="primary" onClick={()=>add({product:scoop.key,variant:scoop.variants[0]._key,flavors:[p.key]})}>Eine Kugel · {money(scoop.variants[0].priceCents)}</button>}
   </div></div>;
 }
+function RelatedProducts({product,products,collections}) {
+  const section=useRef(null);
+  useScrollReveals(section);
+  const candidates=products.filter(p=>p.key!==product.key && p.image && previewAvailable(p) && p.variants?.length);
+  const same=candidates.filter(p=>p.primary===product.primary || p.others?.includes(product.primary));
+  const related=same.slice(0,2);
+  const usedCollections=new Set([product.primary]);
+  for(const p of candidates) {
+    if(related.length===4) break;
+    if(!usedCollections.has(p.primary) && !related.includes(p)) {related.push(p);usedCollections.add(p.primary);}
+  }
+  for(const p of candidates) {if(related.length===4) break;if(!related.includes(p)) related.push(p);}
+  if(!related.length) return null;
+  return <section ref={section} className={styles.related} aria-labelledby="related-title">
+    <div className={styles.relatedHeading} data-reveal="rise"><div><p className="eyebrow">Noch ein Lieblingsmoment</p><h2 id="related-title">Das passt zu deinem Eis.</h2></div>
+      <Link className={styles.collectionLink} href={"/menue/"+product.primary}>Kollektion entdecken <span aria-hidden="true">→</span></Link></div>
+    <div className={styles.relatedGrid}>{related.map(p=><article key={p.key} className={styles.relatedCard} data-reveal="rise">
+      <Link className={styles.relatedPhoto} href={"/menue/produkt/"+p.slug} tabIndex={-1} aria-hidden="true"><Photo product={p}/></Link>
+      <span className={styles.collectionBadge}>{collections.find(c=>c.slug===p.primary)?.name || "Speisekarte"}</span>
+      <h3><Link href={"/menue/produkt/"+p.slug}>{p.name}</Link></h3>
+      <div className={styles.relatedAction}><strong>{p.variants.length>1?"ab ":""}{money(Math.min(...p.variants.map(v=>v.priceCents)))}</strong>
+        <Link className={"primary "+styles.relatedButton} href={"/menue/produkt/"+p.slug}>Ansehen <span className="ctaArrow" aria-hidden="true">→</span></Link></div>
+    </article>)}</div>
+    <svg className={styles.relatedWave} viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 30Q100 0 200 30T400 30T600 30T800 30T1000 30T1200 30V60H0Z"/></svg>
+  </section>;
+}
 function Cart({cart,products,change}) {
   const [postal,setPostal]=useState("22846"),[result,setResult]=useState(null),[error,setError]=useState(""),[busy,setBusy]=useState(false);
   const attempt=useRef(null);
@@ -90,10 +118,18 @@ export default function Menu({menu:{collections,products},product,collection,car
   }
   const listedProducts=collection ? products.filter(p=>p.primary===collection.slug||p.others?.includes(collection.slug)) : [];
   if (collection?.slug==="eissorten") listedProducts.sort((a,b)=>Number(a.primary!=="eissorten")-Number(b.primary!=="eissorten"));
-  return <main className={styles.menu}><div className={styles.top}><Link className="logo" href="/menue">Eis-Taxi.</Link><Link className="cartbtn" href="/menue/warenkorb">Warenkorb ({cart.reduce((sum,x)=>sum+x.quantity,0)})</Link></div>
-    <p className={styles.note}>Menüvorschau · Testbestellungen · Test-PLZ 22846</p>
-    <nav aria-label="Menükollektionen">{collections.map(c=><Link aria-current={collection?.slug===c.slug?"page":undefined} key={c.slug} href={"/menue/"+c.slug}>{c.name}</Link>)}</nav>
+  return <>
+    <header><div className="navwrap"><Link className="logo" href="/">Eis-Taxi.</Link>
+      <nav aria-label="Hauptnavigation"><Link href="/menue">Speisekarte</Link><Link href="/#idee">Unsere Idee</Link><Link href="/#lieferung">Lieferung</Link></nav>
+      <Link className="cartbtn" href="/menue/warenkorb">Warenkorb <b>{cart.reduce((sum,x)=>sum+x.quantity,0)}</b></Link>
+    </div></header>
+    <main className={styles.menu+(product && !cartPage ? " "+styles.productPage : "")}>
+    <nav aria-label="Menükollektionen">{collections.map(c=><Link aria-current={collection?.slug===c.slug?"page":product?.primary===c.slug?"location":undefined} key={c.slug} href={"/menue/"+c.slug}>{c.name}</Link>)}</nav>
     {cartPage?<Cart cart={cart} products={products} change={(i,n)=>save(cart.map((x,j)=>i===j?{...x,quantity:Math.min(99,x.quantity+n)}:x).filter(x=>x.quantity>0))}/>:
-      product?<Product p={product} products={products} add={add}/>:<><h1>{collection.name}</h1><div className={styles.cards}>{listedProducts.map(p=><Link key={p.key} href={"/menue/produkt/"+p.slug}><Photo product={p}/><h2>{p.name}</h2><span>{p.variants?.length?((p.variants.length>1?"ab ":"")+money(Math.min(...p.variants.map(v=>v.priceCents)))):p.note}</span></Link>)}</div></>}
-    <p aria-live="polite">{message} {message && <Link href="/menue/warenkorb">Zum Warenkorb →</Link>}</p></main>;
+      product?<Product p={product} products={products} add={add}/>:<section className={styles.collectionSection}><h1>{collection.name}</h1><div className={styles.cards}>{listedProducts.map(p=><Link key={p.key} href={"/menue/produkt/"+p.slug}><Photo product={p}/><h2>{p.name}</h2><span>{p.variants?.length?((p.variants.length>1?"ab ":"")+money(Math.min(...p.variants.map(v=>v.priceCents)))):p.note}</span></Link>)}</div></section>}
+    <p className={styles.cartMessage} aria-live="polite">{message} {message && <Link href="/menue/warenkorb">Zum Warenkorb →</Link>}</p>
+    {product && !cartPage && <div className={styles.relatedBackdrop}><div className={styles.biscuitDivider} aria-hidden="true"/><RelatedProducts key={product.key} product={product} products={products} collections={collections}/></div>}
+    </main>
+    {product && !cartPage && <><div className={styles.biscuitBottom} aria-hidden="true"><div className={styles.biscuitDivider}/></div><TasteFinder key={product.key} products={products}/><OrderFaq/><StoreFooter/></>}
+    </>;
 }

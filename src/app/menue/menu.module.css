@@ -11,3 +11,61 @@
 .menu label{display:block;margin:14px 0}.menu select,.menu input:not([type=checkbox]){display:block;padding:9px 12px;margin-top:4px;max-width:100%;border:1px solid var(--line);border-radius:7px;background:white;font:inherit}
 .menu button:disabled{opacity:.55;cursor:default}.cart{max-width:760px}.line{display:grid;gap:8px;border-bottom:1px solid var(--line);padding:12px 0}
 @media(max-width:650px){.detail{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.menu nav a{font-size:14px}}
+.relatedBackdrop{background:#e6edda;box-shadow:0 0 0 100vmax #e6edda;clip-path:inset(0 -100vmax);padding-block:clamp(40px,5vw,72px)}
+.relatedBackdrop .related{margin-top:0}
+.related{position:relative;margin-top:72px;padding:42px clamp(18px,3vw,40px) 85px;background:var(--gold);border-radius:28px;overflow:hidden}
+.relatedHeading{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:30px}
+.relatedHeading .eyebrow{margin:0 0 10px}
+.menu .relatedHeading h2{font-size:clamp(32px,4vw,52px);margin:0;max-width:15ch}
+.collectionLink{white-space:nowrap;text-decoration:underline;text-underline-offset:5px}
+.relatedGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.relatedCard{display:flex;flex-direction:column;min-width:0}
+.relatedPhoto{display:block;border-radius:16px;overflow:hidden;background:var(--cream)}
+.relatedPhoto img{aspect-ratio:1;object-fit:contain;transition:transform 350ms ease}
+.collectionBadge{align-self:start;border-radius:20px;background:#dcf1bd;padding:4px 10px;font-size:12px;margin-top:14px}
+.relatedCard:nth-child(2) .collectionBadge{background:var(--pink)}
+.relatedCard:nth-child(3) .collectionBadge{background:#daeff7}
+.relatedCard:nth-child(4) .collectionBadge{background:var(--cream)}
+.relatedCard h3{font-size:clamp(22px,2.2vw,30px);margin:12px 0 18px;flex:1;overflow-wrap:anywhere}
+.relatedAction{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;border-top:1px solid #926900;padding-top:12px}
+.relatedAction strong{font-size:14px}
+.relatedAction .relatedButton{font:700 13px/1.5 Outfit,Arial,sans-serif;padding:8px 12px;gap:8px;background:var(--cream);border:1px solid var(--ink);--cta-fill:#ffb7cc}
+.relatedWave{position:absolute;bottom:-1px;left:0;width:100%;height:44px;fill:#f9dfd8;pointer-events:none}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){.relatedPhoto:hover img{transform:translateY(-3px) rotate(-2deg) scale(1.035)}}
+@media(max-width:900px){.relatedGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.relatedHeading{align-items:start;flex-direction:column}}
+@media(max-width:420px){.relatedGrid{gap:24px 12px}.relatedAction{align-items:start;flex-direction:column}.related{padding-inline:14px;margin-top:48px}.collectionBadge{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.relatedPhoto img{transition:none}}
+/* Warm section backdrop around the product image and options. */
+.detail{background:#f3ded5;box-shadow:0 0 0 100vmax #f3ded5;clip-path:inset(0 -100vmax);padding-block:32px}
+
+.productPage{padding-bottom:0}
+.productPage .cartMessage{margin:0;background:#f3ded5;box-shadow:0 0 0 100vmax #f3ded5;clip-path:inset(0 -100vmax)}
+.relatedBackdrop{position:relative}
+.biscuitDivider{height:32px;pointer-events:none;  background-color:#dba65d;
+  background-image:repeating-linear-gradient(45deg,transparent 0 7px,#b47b384d 7px 9px,#ffe0a166 9px 11px,transparent 11px 18px),repeating-linear-gradient(-45deg,transparent 0 7px,#b47b384d 7px 9px,#ffe0a166 9px 11px,transparent 11px 18px);
+  mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='32' viewBox='0 0 64 32'%3E%3Cpath d='M0 32 32 0 64 32Z' fill='black'/%3E%3C/svg%3E");
+  mask-size:64px 32px;mask-repeat:repeat-x;mask-position:bottom;
+}
+.relatedBackdrop > .biscuitDivider{position:absolute;top:0;left:50%;width:100vw;transform:translateX(-50%)}
+.biscuitBottom{background:#e6edda;width:100%;height:32px}
+/* Place the upper wafers on the outgoing pink section, flush with the boundary. */
+.productPage .detail{padding-bottom:64px}
+.relatedBackdrop > .biscuitDivider{display:none}
+
+.productPage .detail{position:relative}
+.productPage .detail::after{content:"";position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:100vw;height:32px;pointer-events:none;  background-color:#dba65d;
+  background-image:repeating-linear-gradient(45deg,transparent 0 7px,#b47b384d 7px 9px,#ffe0a166 9px 11px,transparent 11px 18px),repeating-linear-gradient(-45deg,transparent 0 7px,#b47b384d 7px 9px,#ffe0a166 9px 11px,transparent 11px 18px);
+  mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='32' viewBox='0 0 64 32'%3E%3Cpath d='M0 32 32 0 64 32Z' fill='black'/%3E%3C/svg%3E");
+  mask-size:64px 32px;mask-repeat:repeat-x;mask-position:bottom;
+}
+.productPage .detail::after{transform:translateX(-50%) rotate(180deg)}
+/* Hang the wafers from the pink/green boundary into the green section. */
+.productPage .detail::after{display:none}
+.relatedBackdrop > .biscuitDivider{display:block;top:0;transform:translateX(-50%) rotate(180deg)}
+.productPage .detail{padding-bottom:32px}
+/* Color the collection-filter strip beneath the navbar. */
+.menu nav[aria-label="Menükollektionen"]{background:#f3ded5;box-shadow:0 0 0 100vmax #f3ded5;clip-path:inset(0 -100vmax);margin:-20px 0 0;padding-block:30px}
+
+.collectionSection{background:#e6edda;box-shadow:0 0 0 100vmax #e6edda;clip-path:inset(0 -100vmax -100vmax);padding-block:36px 60px;min-height:calc(100svh - 210px)}
+.collectionSection > h1{margin:0 0 28px}
+.productPage .detail{margin-top:0}
